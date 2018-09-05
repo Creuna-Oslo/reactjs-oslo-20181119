@@ -1,8 +1,17 @@
 export { book as theme } from 'mdx-deck/themes'
 
-# `@creuna/cli` and Other Fun Things 🌈
+# `@creuna/cli`
+# And Other Fun Things 🌈
 
-`$git clone git@github.com:Creuna-Oslo/reactjs-oslo-20181119.git`
+`$ git clone git@github.com:Creuna-Oslo/reactjs-oslo-20181119.git`
+
+```notes
+These slides exist as a repo on GitHub.
+
+Feel free to download them.
+
+I'm using the excellent mdx-deck, so you can just `yarn && yarn start` to start the show.
+```
 
 ---
 
@@ -14,72 +23,37 @@ export { book as theme } from 'mdx-deck/themes'
 
 `@notpelle` 🐦
 
+```notes
+This is me. I lead the UI team here at Creuna. We are 11 at the moment, and looking for at least 4 more.
+
+I've been programming professionally since 2010: full stack, but more frontend than backend the past couple of years.
+
+Our team is quite new, having started in march 2018.
+
+Feel free to contact me with any questions or comments.
+
+I will also be available after the talks.
+```
 ---
 
 # Agenda 👀
 
-- Why and how we create and maintain our own tooling 🛠
 - Demo 💻
+- Why and how we create and maintain our own tooling 🛠
 - How we have started doing our organizational work 👩‍👧‍👦
 - Why we open source these things 📖
 
----
-
-# Context 🖼
-
-- Creuna, an agency 🏭
-- UI code, HTML/CSS/JS 💻
-- React, a framework 🛠
-- ASP.NET, a Microsoft thing ☁️
+```notes
+The answer to these things is DX (developer experience).
+```
 
 ---
 
-# Sensible To Use `create-react-app`, Right 🤷‍♀️
+# DX ➡️ Developer eXperience
 
----
-
-# `create-react-app` 👍🏻
-
-- Exists
-- Is cool
-- Huge community
-- Someone else maintains it
-
----
-
-# `create-react-app` 👎🏻
-
-- No support for Sass (we use this _a lot_)
-- No static site generation (we like to generate one of these and deploy as a mockup)
-- No server side rendering (most of our backends are ASP.NET)
-
----
-
-# What To Do 🤷‍♀️
-
-- ~~Put things on top of `create-react-app`~~ 💩
-- Custom tooling 🛠
-
----
-
-# How
-
-- Minimum Viable Product ⛏ 
-- Internal launch (beta) 🛳
-- Gather feedback 🙋‍♀️
-- Make it pretty 💅
-- Build more functionality 👷‍♀️
-- Beta ➡️ 1.0.0
-
----
-
-# Minimum Viable Product ⛏ 
-
-- Based on four real world in production customer projects
-- Naïve scaffolding (just write files)
-- No concept of ejecting / ejected from the start
-- No extra tooling
-- Figure out CI/CD (GitHub ➡️ Travis ➡️ npm)
+```notes
+Happy people -> happy code.
+```
 
 ---
 
@@ -96,50 +70,229 @@ creuna stateless
 
 ---
 
-# Building Blocks 🏗
+# Context 🖼
 
-- `@creuna/cli`
-    - `@creuna/prompt`
-    - `@creuna/create-react-app`
-    - `@creuna/react-scripts`
-    - `@creuna/react-components`
+- Creuna, an agency 🏭
+- UI Team, HTML/CSS/JS 💻
+- React, a framework 🛠
+- ASP.NET, a Microsoft thing ⛅️
+
+```notes
+We are a full service digital agency (with some non-digital things thrown in too, like product and package design).
+
+Like I said: I lead the UI team in Creuna.
+
+We use React for most things, even porting older projects from jQuery/Handlebars etc.
+
+The Microsoft stack is huge here, and the only backend stack we really deliver on.
+```
 
 ---
 
-# [ORG STUFF]
+# `create-react-app` is sensible, right? 🤷‍♀️
 
-`TODO`
+```notes
+Yes it is, given the right circumstances
+```
+
+---
+
+# `create-react-app` 👍
+
+✅ Exists
+
+✅ Is cool
+
+✅ Huge community
+
+✅ Someone else maintains it
+
+```notes
+It might be more pragmatic to use something that exists
+
+It's also a cool/good project with a large community
+
+A plus that someone else maintains it, so we don't have to spend time on that
+```
+
+---
+
+# `create-react-app` 👎
+
+❌ No support for Sass
+
+❌ No static site generation
+
+❌ No server side rendering
+
+```notes
+We use Sass a lot
+
+We like to generate static sites and deploy them as mockups, so that we are able to iterate quickly on the UI without building out every change further back/down in the stack
+
+Most of our backends are ASP.NET MVC w/Razor, and it would be nice to render our UI there too
+```
+
+---
+
+# What To Do 🤷‍♀️
+
+- ~~Put things on top of `create-react-app`~~ 💩
+- Custom tooling 🛠
+
+```notes
+This is our conclusion.
+
+We feel that the cost of custom tooling is worth it.
+```
+
+---
+
+# How
+
+- Minimum Viable Product ⛏ 
+- Beta (internal launch) 🛳
+- Gather feedback 🙋‍♀️
+- Make it pretty 💅
+- Build more functionality 👷‍♀️
+- Beta ➡️ 1.0.0
+
+```notes
+You can see the history on GitHub if you really want to follow the story.
+```
+
+---
+
+# Minimum Viable Product ⛏ 
+
+- Based on four real world, in production, customer projects
+- Naïve scaffolding (just write files)
+- No concept of ejecting / ejected from the start
+- No extra tooling
+- Figure out CI/CD (GitHub ➡️ Travis ➡️ npm) later
+
+---
+
+# Building Blocks 🏗
+
+`@creuna/cli`
+
+`@creuna/prompt`
+
+`@creuna/create-react-app` ⬅️ MVP
+
+`@creuna/react-scripts`
+
+`@creuna/react-components`
+
+```notes
+cli: handling all the user input
+
+prompt: handling all the interactivity after initial input
+
+create-react-app: app scaffolding
+
+react-scripts: scripts for working with react components
+
+react-components: demo components that don't live on npm
+
+Feel free to check these out. Everything is on GitHub.
+```
+
+---
+
+# Organizational Work 🥅
 
 - Transparency
 - Collaboration
 - Ownership
-- Predictability
 - Sharing
-- Known tools (Git, GitHub issues, PRs, Markdown)
+
+```notes
+These are some of the things that I think are most important when it comes to organizational work.
+
+Just being a manager that no one knows what does is a bit old school.
+
+I work for my team, not the other way around.
+
+This is not easy to accomplish, especially not when the existing way of working is not like this, but we're experimenting and iterating.
+```
 
 ---
 
-# [OPEN SOURCE ALL THE THINGS]
+# Just Put It On GitHub 😱
 
-`TODO`
+- Git
+- GitHub issues
+- Pull requests (with discussions)
+- Markdown
+- Easy and possible to expose
 
-- All the org stuff, but externally as well
-- We don't just want to make ourselves better
+```notes
+GitHub will actually give us the tools we need to reach all our goals.
+
+It's also a tool, or a collection of tools, that we already know how to use, or have to learn anyway.
+
+Really easy to expose things to the rest of the world.
+```
+
+---
+
+# OPEN SOURCE ALL THE THINGS
+
+- Not just for us
 - Attract like-minded people
-- Know (a bit more) what you're getting yourself into
+- Know what you're getting yourself into
+
+```notes
+So why don't we just do that? EXPOSE ALL THE THINGS!
+
+It's not just for us anymore, we want to inspire others as well.
+
+We also, of course, want to attract people that want to work this way.
+
+It's also nice to know be able to examine, in a little more detail than what is usual, what you are getting yourself into when working with us.
+```
 
 ---
 
-# Join Us 👩‍💻 ➡️ 👨‍👧‍👦
+# What Does This Look Like?
 
-`yarn global add @creuna/cli`
+```notes
+https://github.com/orgs/Creuna-Oslo/teams/ui/repositories
 
-`creuna job`
+https://github.com/Creuna-Oslo/ui-team-meta
+
+Also show the open/closed issues
+
+https://github.com/Creuna-Oslo/ui-team-meta/pull/20 (Core Values)
+
+https://github.com/Creuna-Oslo/ui-team-meta/pull/18 (Tools of Quality)
+
+https://github.com/Creuna-Oslo/ui-team-meta/tree/master/ads (Job ads)
+```
+---
+
+# Join Us 👩‍💻👩‍💻👩‍💻👩‍💻 ➡️ 🏢
+
+`yarn global add @creuna/cli && creuna job`
+
+`npx @creuna/cli job`
+
+```notes
+We need more people in our little developer family.
+```
 
 ---
 
-# Thanks 👏🏻
+# Thanks 🙇‍♂️
 ## Pelle Bjerkestrand 👨‍💻
 `pelle.bjerkestrand@creuna.no` 💌
 
 `@notpelle` 🐦
+
+```notes
+Again: feel free to contact me about anything.
+
+Any questions?
+```
