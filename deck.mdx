@@ -67,7 +67,7 @@ The Microsoft stack is huge here, and the only backend stack we really deliver o
 - Real world projects 🌍
 
 ```notes
-The answer to these things is DX (developer experience).
+The short answer to these questions is DX (developer experience).
 ```
 
 ---
@@ -89,6 +89,15 @@ creuna component
 creuna page
 creuna stateful
 creuna stateless
+creuna lib
+```
+
+---
+
+# Our Own Tooling 🛠
+
+```notes
+Why and how we create and maintain our own tooling
 ```
 
 ---
@@ -130,6 +139,8 @@ A plus that someone else maintains it, so we don't have to spend time on that
 ❌ No server side rendering
 
 ```notes
+Pretend `create-react-app` 2 hasn't come out yet, it has Sass support
+
 We use Sass a lot
 
 We like to generate static sites and deploy them as mockups, so that we are able to iterate quickly on the UI without building out every change further back/down in the stack
@@ -141,13 +152,32 @@ Most of our backends are ASP.NET MVC w/Razor, and it would be nice to render our
 
 # What To Do 🤷‍♀️
 
+- Put things on top of `create-react-app` 🔌
+- Custom tooling 🛠
+
+```notes
+We have two choices here.
+
+We can either put things on top of `create-react-app`, which could have been nice had they had a nice way to write plugins.
+
+Or we can write our own custom tooling and get everything exactly they way we want it, but it will take some time.
+
+Since `create-react-app` doesn't have all the things we need or want, we really didn't have any choice.
+```
+
+---
+
+# What To Do 🤷‍♀️
+
 - ~~Put things on top of `create-react-app`~~ 💩
 - Custom tooling 🛠
 
 ```notes
-This is our conclusion.
+This is our conclusion. Of course we wanted to create our own custom tooling.
 
-We feel that the cost of custom tooling is worth it.
+Both because we actually need something different than what is available elsewhere, and because it's a fun challenge.
+
+We also feel that the cost of custom tooling is worth it.
 ```
 
 ---
@@ -162,7 +192,21 @@ We feel that the cost of custom tooling is worth it.
 - Beta ➡️ 1.0.0
 
 ```notes
-You can see the history on GitHub if you really want to follow the story.
+So how did we do this?
+
+We started with a really small MVP and built it out from there.
+
+Then we launched an "internal" beta, which was open to anyone, but only presented internally (it was available on npm).
+
+We gathered feedback from our own colleagues, and based on that feedback made the tool a little prettier and more user friendly.
+
+We also built, and are still building, new functionality.
+
+Finally we decided to release version 1 for real.
+
+The current version is 1.2.1, with version 2 coming out as soon as we iron out some small bugs.
+
+You can see the history on GitHub (https://github.com/Creuna-Oslo/create-react-app) if you really want to follow the story.
 ```
 
 ---
@@ -205,7 +249,76 @@ Feel free to check these out. Everything is on GitHub.
 
 ---
 
-# Organizational Work Goals 🥅
+# Built With Web Tech 🕸
+
+- Git(Hub)
+- Node
+- Babel
+- ESLint
+- Prettier
+- Ava
+
+```notes
+Everything is in Git, on GitHub, just like our client projects (which are not on GitHub).
+
+We run everything on Node, just like you can build sites and APIs that run on Node (we just use it for tooling instead).
+
+Babel, of course, for transpilation.
+
+ESLint and Prettier are a killer combo for enforcing and maintaining a coding style.
+
+We use the wonderful Ava for testing.
+```
+
+---
+
+# DX ➡️ Developer eXperience
+
+```notes
+Working with our tooling feels just like working with the third party tools in our stack: git, npm, yarn etc.
+
+Creating and maintaining our tooling feels just like creating and maintaining a client website.
+```
+
+---
+
+# The Stack 🥞
+
+```notes
+Let's take a look at the development stack.
+
+- yarn or npm: whatever floats your boat.
+- eslint, prettier, editorconfig, jsconfig for a happy editor, programmer and codebase.
+- webpack and plugins with in a well used and tested configuration
+- react
+- scripts in `package.json` for all the things (go through them).
+    - build
+    - analyze
+    - dev
+    - build:static
+    - test:ui
+```
+
+---
+
+# Open Source 📖
+
+```notes
+All of this is open source, which leads us to our next main point.
+```
+---
+
+# Open Source 📖
+# Organizational Work 👩‍👧‍👦
+
+```notes
+How we have started doing our organizational work 👩‍👧‍👦
+Why we open source these things 📖
+```
+
+---
+
+# Goals 🥅
 
 - Transparency
 - Collaboration
@@ -217,8 +330,18 @@ These are some of the things that I think are most important when it comes to or
 
 Just being a manager that no one knows what does is a bit old school.
 
-I work for my team, not the other way around.
+I want everything I do to be transparent to the rest of the team, and organization. I, as a manager, work for my team. Not the other way around.
 
+I want the team, and anyone that wants to, to be able to contrubute and collaborate.
+
+I think this will lead to a sense of ownership and, if we're lucky, wanting to share how we do things with others.
+```
+
+---
+
+# But How 🤷‍♀️
+
+```notes
 This is not easy to accomplish, especially not when the existing way of working is not like this, but we're experimenting and iterating.
 ```
 
@@ -233,6 +356,8 @@ This is not easy to accomplish, especially not when the existing way of working 
 - Easy and possible to expose
 
 ```notes
+This was one suggestions.
+
 GitHub will actually give us the tools we need to reach all our goals.
 
 It's also a tool, or a collection of tools, that we already know how to use, or have to learn anyway.
@@ -242,7 +367,7 @@ Really easy to expose things to the rest of the world.
 
 ---
 
-# OPEN SOURCE ALL THE THINGS
+# And Open Source Everything 📖
 
 - Not just for us
 - Attract like-minded people
@@ -263,7 +388,10 @@ It's also nice to know be able to examine, in a little more detail than what is 
 # What Does This Look Like?
 
 ```notes
+https://github.com/orgs/Creuna-Oslo/teams/ui/members
+
 https://github.com/orgs/Creuna-Oslo/teams/ui/repositories
+https://creuna-dashboard.firebaseapp.com
 
 https://github.com/Creuna-Oslo/ui-team-meta
 
@@ -277,18 +405,34 @@ https://github.com/Creuna-Oslo/ui-team-meta/tree/master/ads (Job ads)
 ```
 ---
 
+# Real World Projects 🌍
+
+```notes
+Show some real world projects built with our tooling.
+```
+
+---
+
 # Join Us 👩‍💻👩‍💻👩‍💻👩‍💻 ➡️ 🏭
 
 <!-- `yarn global add @creuna/cli && creuna job`
 
 `npx @creuna/cli job` -->
 
-`creuna.no` ➡️ C-Talent
+➡️️ `creuna.no/jobb`
+
+👩‍💻️ Erfarne brukergrensesnittutviklere
+
+👶 C-Talent
 
 ```notes
 We need more people in our little developer family.
 
 Like I said: I have room for at least four more talented individuals.
+
+We're also accepting new graduates into our C-Talent program. The first day of work will be August 5th, 2019.
+
+I know the text says that applications have to be in by October 10th, but we will accept people after that as well.
 ```
 
 ---
