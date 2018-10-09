@@ -67,7 +67,15 @@ The Microsoft stack is huge here, and the only backend stack we really deliver o
 - Real world projects 🌍
 
 ```notes
-The short answer to these questions is DX (developer experience).
+Today I'm going to show you our CLI tools and talk about how and why we created them.
+
+I'm also going to touch a bit on how we do organizational work in the team that I lead and why we do it in that way.
+
+At the end I'll show you some real world projects that are made by us using our tools.
+
+Feel free to put your hand up or shout out if you have any questions or comments while I'm presenting, so we can keep things in context if it's relevant.
+
+The short answer to the questions in that list is DX (developer experience).
 ```
 
 ---
@@ -75,6 +83,8 @@ The short answer to these questions is DX (developer experience).
 # DX ➡️ Developer eXperience
 
 ```notes
+This is very important for us, as:
+
 Happy people ➡️ happy code ➡️ happy customers ➡️ happy business.
 ```
 
@@ -97,7 +107,13 @@ creuna lib
 # Our Own Tooling 🛠
 
 ```notes
-Why and how we create and maintain our own tooling
+So this was a quick demo of our own tooling.
+
+But why did we make this?
+
+And how did we make it?
+
+There are many options to choose from already, like Facebook's own create-react-app.
 ```
 
 ---
@@ -105,7 +121,9 @@ Why and how we create and maintain our own tooling
 # `create-react-app` is sensible, right? 🤷‍♀️
 
 ```notes
-Yes it is, given the right circumstances
+One would think that the framework makers' own tooling is good enough, right?
+
+Yes it is, given the right circumstances.
 ```
 
 ---
@@ -121,11 +139,13 @@ Yes it is, given the right circumstances
 ✅ Someone else maintains it
 
 ```notes
-It might be more pragmatic to use something that exists
+It might be more pragmatic to use something that exists than to build something new
 
-It's also a cool/good project with a large community
+It's also a cool/good project with a large community (since it's the "default")
 
 A plus that someone else maintains it, so we don't have to spend time on that
+
+We can, of course, contribute to it
 ```
 
 ---
@@ -139,11 +159,13 @@ A plus that someone else maintains it, so we don't have to spend time on that
 ❌ No server side rendering
 
 ```notes
-Pretend `create-react-app` 2 hasn't come out yet, it has Sass support
+Pretend `create-react-app` 2 hasn't come out yet, because it has Sass support 😂
 
 We use Sass a lot
 
 We like to generate static sites and deploy them as mockups, so that we are able to iterate quickly on the UI without building out every change further back/down in the stack
+
+We even do projects for clients where the end result is a static site: fast + secure is a killer combo
 
 Most of our backends are ASP.NET MVC w/Razor, and it would be nice to render our UI there too
 ```
@@ -156,13 +178,15 @@ Most of our backends are ASP.NET MVC w/Razor, and it would be nice to render our
 - Custom tooling 🛠
 
 ```notes
-We have two choices here.
+We had two choices here.
 
-We can either put things on top of `create-react-app`, which could have been nice had they had a nice way to write plugins.
+We could either put things on top of `create-react-app`, which could have been nice had they had a nice way to write plugins.
 
-Or we can write our own custom tooling and get everything exactly they way we want it, but it will take some time.
+Or we could write our own custom tooling and get everything exactly they way we want it, but it will take some extra time and effort.
 
 Since `create-react-app` doesn't have all the things we need or want, we really didn't have any choice.
+
+That's a good way to get something you really want as a developer, btw: just say that something must be done a certain way 😛
 ```
 
 ---
@@ -206,18 +230,24 @@ Finally we decided to release version 1 for real.
 
 The current version is 1.2.1, with version 2 coming out as soon as we iron out some small bugs.
 
-You can see the history on GitHub (https://github.com/Creuna-Oslo/create-react-app) if you really want to follow the story.
+You can see the history on GitHub (github.com/Creuna-Oslo/create-react-app, github.com/Creuna-Oslo/cli) if you really want to follow the story.
 ```
 
 ---
 
 # Minimum Viable Product ⛏ 
 
-- Based on four real world, in production, customer projects
+- Based on real world, in production, customer projects
 - Naïve scaffolding (just write files)
 - No concept of ejecting / ejected from the start
 - No extra tooling
 - Figure out CI/CD (GitHub ➡️ Travis ➡️ npm) later
+
+```notes
+Let's take a look at what we needed, at minimum, for this to even be a tool that would give us some value.
+
+We must base it on how we work in real projects, since we are making it for use in our real projects.
+```
 
 ---
 
@@ -234,6 +264,8 @@ You can see the history on GitHub (https://github.com/Creuna-Oslo/create-react-a
 `@creuna/react-components`
 
 ```notes
+These are the building blocks as our tooling exists today. A bit more than the MVP, but they are all valuable additions.
+
 cli: handling all the user input
 
 prompt: handling all the interactivity after initial input
@@ -244,7 +276,7 @@ react-scripts: scripts for working with react components
 
 react-components: demo components that don't live on npm
 
-Feel free to check these out. Everything is on GitHub.
+Feel free to check these out. Everything is on GitHub (github.com/Creuna-Oslo).
 ```
 
 ---
@@ -261,7 +293,7 @@ Feel free to check these out. Everything is on GitHub.
 ```notes
 Everything is in Git, on GitHub, just like our client projects (which are not on GitHub).
 
-We run everything on Node, just like you can build sites and APIs that run on Node (we just use it for tooling instead).
+We run everything on Node, even though we are a .NET shop, just like you can build sites and APIs that run on Node (we just use it for tooling instead).
 
 Babel, of course, for transpilation.
 
@@ -275,6 +307,8 @@ We use the wonderful Ava for testing.
 # DX ➡️ Developer eXperience
 
 ```notes
+Again, this is all about developer experience.
+
 Working with our tooling feels just like working with the third party tools in our stack: git, npm, yarn etc.
 
 Creating and maintaining our tooling feels just like creating and maintaining a client website.
@@ -290,7 +324,7 @@ Let's take a look at the development stack.
 - yarn or npm: whatever floats your boat.
 - eslint, prettier, editorconfig, jsconfig for a happy editor, programmer and codebase.
 - webpack and plugins with in a well used and tested configuration
-- react
+- react, of course (everything is react these days)
 - scripts in `package.json` for all the things (go through them).
     - build
     - analyze
@@ -304,7 +338,7 @@ Let's take a look at the development stack.
 # Open Source 📖
 
 ```notes
-All of this is open source, which leads us to our next main point.
+All of this is open source, something we really love and care about, which leads us to our next main point.
 ```
 ---
 
@@ -312,8 +346,18 @@ All of this is open source, which leads us to our next main point.
 # Organizational Work 👩‍👧‍👦
 
 ```notes
+Which is/are:
+
 How we have started doing our organizational work 👩‍👧‍👦
 Why we open source these things 📖
+
+Being a programmer does not consist of mostly typing programs into the computer.
+
+Don't become a programmer if you don't like people, certainly not a programmer at an agency.
+
+Most of my day is spent figuring things out with other people (programmers, designers, strategists etc.), talking to clients and other stakeholders, and so on.
+
+These so called "soft" skills are really hard, so we're trying to reach some goals in ways that may not be that traditional.
 ```
 
 ---
@@ -326,9 +370,9 @@ Why we open source these things 📖
 - Sharing
 
 ```notes
-These are some of the things that I think are most important when it comes to organizational work.
+These are some of the things that I think are most important when it comes to organizational work, and also how we work day to day.
 
-Just being a manager that no one knows what does is a bit old school.
+Me just being a manager that no one knows what does is a bit old school.
 
 I want everything I do to be transparent to the rest of the team, and organization. I, as a manager, work for my team. Not the other way around.
 
@@ -342,7 +386,7 @@ I think this will lead to a sense of ownership and, if we're lucky, wanting to s
 # But How 🤷‍♀️
 
 ```notes
-This is not easy to accomplish, especially not when the existing way of working is not like this, but we're experimenting and iterating.
+This is not easy to accomplish, nothing that's really worth it is, especially not when the existing way of working is not like this, but we're experimenting and iterating.
 ```
 
 ---
@@ -362,7 +406,11 @@ GitHub will actually give us the tools we need to reach all our goals.
 
 It's also a tool, or a collection of tools, that we already know how to use, or have to learn anyway.
 
-Really easy to expose things to the rest of the world.
+You can't really do any programming at scale without Git (or similar), and I don't think you should be doing any programming at all without it.
+
+Markdown is here to stay: learn it. This whole presentation is Markdown.
+
+Once something is on GitHub it's really easy to expose it to the rest of the world.
 ```
 
 ---
@@ -380,7 +428,9 @@ It's not just for us anymore, we want to inspire others as well.
 
 We also, of course, want to attract people that want to work this way.
 
-It's also nice to know be able to examine, in a little more detail than what is usual, what you are getting yourself into when working with us.
+And we want people to know, at least a little better, what they're getting themselves into.
+
+Or at least be able to examine what the mindset of the people they will be working with is like.
 ```
 
 ---
@@ -394,6 +444,8 @@ https://github.com/orgs/Creuna-Oslo/teams/ui/repositories
 https://creuna-dashboard.firebaseapp.com
 
 https://github.com/Creuna-Oslo/ui-team-meta
+
+This repo is pretty special, since it's a repo that contains no code, but information about us as a team.
 
 Also show the open/closed issues
 
@@ -431,6 +483,8 @@ We need more people in our little developer family.
 Like I said: I have room for at least four more talented individuals.
 
 We're also accepting new graduates into our C-Talent program. The first day of work will be August 5th, 2019.
+
+Last year my team had 3, this year we have 3. We will probably not hire more than 3 next year.
 
 I know the text says that applications have to be in by October 10th, but we will accept people after that as well.
 ```
