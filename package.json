@@ -1,5 +1,8 @@
 {
   "scripts": {
+    "build": "mdx-deck build deck.mdx",
+    "pdf": "mdx-deck pdf deck.mdx",
+    "screenshot": "mdx-deck screenshot deck.mdx",
     "start": "mdx-deck deck.mdx"
   },
   "dependencies": {
